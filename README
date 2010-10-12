@@ -1,0 +1,63 @@
+NAME
+    Net::HTTP::Spore - SPORE client
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+        my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+
+        $client->enable('Format::JSON');
+        $client->enable('Auth::OAuth');
+
+        my $timeline = $client->public_timeline(format => 'json');
+        my $tweets = $timeline->body;
+
+        foreach my $tweet (@$tweets) {
+            print $tweet->{user}->{screen_name}. " says ".$tweet->{text}."\n";
+        }
+
+        my $friends_timeline = $client->friends_timeline(format => 'json');
+
+DESCRIPTION
+    This module is an implementation of the SPORE specification. To use this
+    client, you need to use or to write a SPORE specification of an API.
+    Some specifications are available
+    <http://github.com/SPORE/api-description>.
+
+  CLIENT CREATION
+    First you need to create a client. This can be done using two methods,
+    new_from_spec and new_from_string. The client will read the
+    specification file to create a appropriate methods to interact with the
+    API.
+
+  MIDDLEWARES
+    It's possible to activate some middlewares to extend the usage of the
+    client. If you're using an API that discuss in JSON, you can enable the
+    middleware Net::HTTP::Spore::Middleware::JSON.
+
+        $client->enable('Format::JSON');
+
+    or only on some path
+
+        $client->enable_if(sub{$_->[0]->path =~ m!/path/to/json/stuff!}, 'Format::JSON');
+
+  METHODS
+    new_from_spec($specification_file, %args)
+        Create and return a Net::HTTP::Spore::Core object, with methods
+        generated from the specification file. The specification file can
+        either be a file on disk or a remote URL.
+
+    new_from_string($specification_string, %args)
+        Create and return a Net::HTTP::Spore::Core object, with methods
+        generated from the specification string.
+
+AUTHOR
+    franck cuny <franck@lumberjaph.net>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2010 by linkfluence.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
