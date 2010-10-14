@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth::OAuth;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.01';
+  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.02';
 }
 
 # ABSTRACT: middleware for OAuth authentication
@@ -54,7 +54,7 @@ Net::HTTP::Spore::Middleware::Auth::OAuth - middleware for OAuth authentication
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

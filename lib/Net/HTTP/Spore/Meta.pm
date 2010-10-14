@@ -58,7 +58,7 @@ Net::HTTP::Spore::Meta - Meta class for all SPORE object
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

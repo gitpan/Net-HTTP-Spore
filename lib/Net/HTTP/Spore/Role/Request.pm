@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Request;
 BEGIN {
-  $Net::HTTP::Spore::Role::Request::VERSION = '0.01';
+  $Net::HTTP::Spore::Role::Request::VERSION = '0.02';
 }
 
 # ABSTRACT: make HTTP request
@@ -66,7 +66,7 @@ Net::HTTP::Spore::Role::Request - make HTTP request
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

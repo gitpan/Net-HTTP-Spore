@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Request;
 BEGIN {
-  $Net::HTTP::Spore::Request::VERSION = '0.01';
+  $Net::HTTP::Spore::Request::VERSION = '0.02';
 }
 
 # ABSTRACT: Net::HTTP::Spore::Request - Portable HTTP request object from SPORE env hash
@@ -176,7 +176,7 @@ Net::HTTP::Spore::Request - Net::HTTP::Spore::Request - Portable HTTP request ob
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

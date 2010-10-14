@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::UserAgent;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::UserAgent::VERSION = '0.01';
+  $Net::HTTP::Spore::Middleware::UserAgent::VERSION = '0.02';
 }
 
 # ABSTRACT: middleware to change the user-agent value
@@ -28,7 +28,7 @@ Net::HTTP::Spore::Middleware::UserAgent - middleware to change the user-agent va
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

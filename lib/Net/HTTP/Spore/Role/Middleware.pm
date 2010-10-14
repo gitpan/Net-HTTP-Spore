@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Middleware;
 BEGIN {
-  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.01';
+  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.02';
 }
 
 use Moose::Role;
@@ -69,7 +69,7 @@ Net::HTTP::Spore::Role::Middleware
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

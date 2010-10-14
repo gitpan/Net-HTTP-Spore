@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::JSON;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::JSON::VERSION = '0.01';
+  $Net::HTTP::Spore::Middleware::Format::JSON::VERSION = '0.02';
 }
 
 # ABSTRACT: middleware for JSON format
@@ -13,13 +13,13 @@ has _json_parser => (
     is      => 'rw',
     isa     => 'JSON',
     lazy    => 1,
-    default => sub { JSON->new->allow_nonref },
+    default => sub { JSON->new->utf8(1)->allow_nonref },
 );
 
 sub encode       { $_[0]->_json_parser->encode( $_[1] ); }
 sub decode       { $_[0]->_json_parser->decode( $_[1] ); }
 sub accept_type  { ( 'Accept' => 'application/json' ) }
-sub content_type { ( 'Content-Type' => 'application/json' ) }
+sub content_type { ( 'Content-Type' => 'application/json;' ) }
 
 1;
 
@@ -33,7 +33,7 @@ Net::HTTP::Spore::Middleware::Format::JSON - middleware for JSON format
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

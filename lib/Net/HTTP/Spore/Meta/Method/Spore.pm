@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method::Spore;
 BEGIN {
-  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.01';
+  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.02';
 }
 
 # ABSTRACT: declare API method
@@ -94,7 +94,7 @@ Net::HTTP::Spore::Meta::Method::Spore - declare API method
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

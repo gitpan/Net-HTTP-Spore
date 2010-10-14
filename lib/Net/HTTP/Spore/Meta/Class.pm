@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Class;
 BEGIN {
-  $Net::HTTP::Spore::Meta::Class::VERSION = '0.01';
+  $Net::HTTP::Spore::Meta::Class::VERSION = '0.02';
 }
 
 # ABSTRACT: metaclass for all API client
@@ -21,7 +21,7 @@ Net::HTTP::Spore::Meta::Class - metaclass for all API client
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

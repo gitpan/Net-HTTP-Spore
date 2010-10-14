@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::XML;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::XML::VERSION = '0.01';
+  $Net::HTTP::Spore::Middleware::Format::XML::VERSION = '0.02';
 }
 
 # ABSTRACT: middleware for XML format
@@ -27,7 +27,7 @@ Net::HTTP::Spore::Middleware::Format::XML - middleware for XML format
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 

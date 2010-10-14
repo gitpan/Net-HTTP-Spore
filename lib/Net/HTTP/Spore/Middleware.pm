@@ -1,12 +1,13 @@
 package Net::HTTP::Spore::Middleware;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::VERSION = '0.01';
+  $Net::HTTP::Spore::Middleware::VERSION = '0.02';
 }
 
 # ABSTRACT: middlewares base class
 
 use strict;
 use warnings;
+use Scalar::Util;
 
 sub new {
     my $class = shift;
@@ -25,7 +26,7 @@ sub response_cb {
 sub wrap {
     my ($self, $cond, @args) = @_;
 
-    if (!ref $self) {
+    if (!Scalar::Util::blessed($self)) {
         $self = $self->new(@args);
     }
 
@@ -48,7 +49,7 @@ Net::HTTP::Spore::Middleware - middlewares base class
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 AUTHOR
 

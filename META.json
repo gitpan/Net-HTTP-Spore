@@ -39,6 +39,7 @@
             "MooseX::Types::URI" : 0,
             "Net::HTTP::API::Error" : 0,
             "Net::OAuth" : 0,
+            "Scalar::Util" : 0,
             "Time::HiRes" : 0,
             "Try::Tiny" : 0,
             "URI" : 0,
@@ -66,7 +67,7 @@
          "url" : "git://github.com/franckcuny/net-http-spore.git"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_Dist_Zilla" : {
       "plugins" : [
          {
