@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Mock;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Mock::VERSION = '0.02';
+  $Net::HTTP::Spore::Middleware::Mock::VERSION = '0.03';
 }
 
 # ABSTRACT: Simple Mocker for Spore middlewares
@@ -13,8 +13,9 @@ has tests => ( isa => 'HashRef', is => 'ro', required => 1 );
 sub call {
     my ( $self, $req ) = @_;
 
+    my $finalized_request = $req->finalize;
     foreach my $r ( keys %{ $self->tests } ) {
-        next unless $r eq $req->path;
+        next unless $r eq $finalized_request->uri->path;
         my $res = $self->tests->{$r}->($req);
         return $res if defined $res;
     }
@@ -32,7 +33,7 @@ Net::HTTP::Spore::Middleware::Mock - Simple Mocker for Spore middlewares
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

@@ -36,6 +36,7 @@ sub init_meta {
         for   => $for,
         roles => [
             qw/
+              Net::HTTP::Spore::Role::Debug
               Net::HTTP::Spore::Role::Description
               Net::HTTP::Spore::Role::UserAgent
               Net::HTTP::Spore::Role::Request
@@ -58,7 +59,7 @@ Net::HTTP::Spore::Meta - Meta class for all SPORE object
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 AUTHOR
 

@@ -24,7 +24,6 @@
             "Carp" : 0,
             "HTTP::Headers" : 0,
             "HTTP::Request" : 0,
-            "Hash::MultiValue" : 0,
             "IO::All" : 0,
             "JSON" : 0,
             "LWP::UserAgent" : 0,
@@ -37,7 +36,6 @@
             "Moose::Util::TypeConstraints" : 0,
             "MooseX::Types::Moose" : 0,
             "MooseX::Types::URI" : 0,
-            "Net::HTTP::API::Error" : 0,
             "Net::OAuth" : 0,
             "Scalar::Util" : 0,
             "Time::HiRes" : 0,
@@ -67,7 +65,7 @@
          "url" : "git://github.com/franckcuny/net-http-spore.git"
       }
    },
-   "version" : "0.02",
+   "version" : "0.03",
    "x_Dist_Zilla" : {
       "plugins" : [
          {

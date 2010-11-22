@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Response;
 BEGIN {
-  $Net::HTTP::Spore::Response::VERSION = '0.02';
+  $Net::HTTP::Spore::Response::VERSION = '0.03';
 }
 
 # ABSTRACT: Portable HTTP Response object for SPORE response
@@ -8,7 +8,7 @@ BEGIN {
 use strict;
 use warnings;
 
-use overload '@{}' => \&finalize;
+use overload '@{}' => \&finalize, fallback => 1;
 
 use HTTP::Headers;
 
@@ -118,7 +118,7 @@ Net::HTTP::Spore::Response - Portable HTTP Response object for SPORE response
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

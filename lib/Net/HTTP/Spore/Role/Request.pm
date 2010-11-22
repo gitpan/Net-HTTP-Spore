@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Request;
 BEGIN {
-  $Net::HTTP::Spore::Role::Request::VERSION = '0.02';
+  $Net::HTTP::Spore::Role::Request::VERSION = '0.03';
 }
 
 # ABSTRACT: make HTTP request
@@ -36,22 +36,49 @@ sub http_request {
         }
     }
 
-    if (defined $response) {
-        map { $_->($response) } reverse @middlewares;
-        return $response;
+    return
+      $self->_execute_middlewares_on_response( $response, @middlewares )
+      if defined $response;
+
+    $response = $self->_request($request);
+
+    return $self->_execute_middlewares_on_response( $response, @middlewares );
+}
+
+sub _execute_middlewares_on_response {
+    my ($self, $response, @middlewares) = @_;
+
+    foreach my $mw ( reverse @middlewares ) {
+        my ($res, $error);
+        try {
+            $res = $mw->($response);
+        }catch{
+            $error = 1;
+            $response->code(599);
+            $response->body({error => $_, body=>$response->body});
+        };
+        $response = $res
+          if ( defined $res
+            && Scalar::Util::blessed($res)
+            && $res->isa('Net::HTTP::Spore::Response') );
+        last if $error;
     }
+
+    $response;
+}
+
+sub _request {
+    my ($self, $request) = @_;
 
     my $result = $self->request($request->finalize);
 
-    $response = $request->new_response(
+    my $response = $request->new_response(
         $result->code,
         $result->headers,
         $result->content,
     );
 
-    map { $_->($response) } reverse @middlewares;
-
-    $response;
+    return $response;
 }
 
 1;
@@ -66,7 +93,7 @@ Net::HTTP::Spore::Role::Request - make HTTP request
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

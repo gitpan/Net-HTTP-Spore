@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth::OAuth;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.02';
+  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.03';
 }
 
 # ABSTRACT: middleware for OAuth authentication
@@ -54,11 +54,14 @@ Net::HTTP::Spore::Middleware::Auth::OAuth - middleware for OAuth authentication
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
     my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+
+    $client->enable('Format::JSON');
+
     $client->enable(
         'Auth::OAuth',
         consumer_key    => 'xxx',
@@ -66,6 +69,10 @@ version 0.02
         token           => '123',
         token_secret    => '456'
     );
+
+    print $client->friends_timeline(
+      format => 'json'
+    )->body->[0]->{text};
 
 =head1 DESCRIPTION
 

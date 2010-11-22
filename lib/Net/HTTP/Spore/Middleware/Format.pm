@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.02';
+  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.03';
 }
 
 # ABSTRACT: base class for formats middlewares
@@ -78,7 +78,7 @@ Net::HTTP::Spore::Middleware::Format - base class for formats middlewares
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 

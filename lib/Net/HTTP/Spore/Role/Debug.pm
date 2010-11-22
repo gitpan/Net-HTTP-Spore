@@ -1,27 +1,31 @@
-package Net::HTTP::Spore::Core;
+package Net::HTTP::Spore::Role::Debug;
 BEGIN {
-  $Net::HTTP::Spore::Core::VERSION = '0.03';
+  $Net::HTTP::Spore::Role::Debug::VERSION = '0.03';
 }
 
-use Net::HTTP::Spore::Meta;
+use Moose::Role;
+
+has trace => (
+    is      => 'rw',
+    isa     => 'Bool',
+    lazy    => 1,
+    default => sub { $ENV{SPORE_TRACE} ? 1 : 0; }
+);
+
+sub _trace_msg { print STDOUT $_[1]."\n" if $_[0]->trace; }
 
 1;
-
 
 __END__
 =pod
 
 =head1 NAME
 
-Net::HTTP::Spore::Core
+Net::HTTP::Spore::Role::Debug
 
 =head1 VERSION
 
 version 0.03
-
-=head1 SYNOPSIS
-
-=head1 DESCRIPTION
 
 =head1 AUTHOR
 

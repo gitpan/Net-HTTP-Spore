@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::UserAgent;
 BEGIN {
-  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.02';
+  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.03';
 }
 
 # ABSTRACT: create UserAgent
@@ -18,6 +18,7 @@ has api_useragent => (
         my $ua = LWP::UserAgent->new();
         $ua->agent( "Net::HTTP::Spore v" . $Net::HTTP::Spore::VERSION . " (Perl)" );
         $ua->env_proxy;
+        $ua->max_redirect(0);
         return $ua;
     }
 );
@@ -33,7 +34,7 @@ Net::HTTP::Spore::Role::UserAgent - create UserAgent
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 AUTHOR
 

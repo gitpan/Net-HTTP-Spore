@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Description;
 BEGIN {
-  $Net::HTTP::Spore::Role::Description::VERSION = '0.02';
+  $Net::HTTP::Spore::Role::Description::VERSION = '0.03';
 }
 
 # ABSTRACT: attributes for API description
@@ -8,23 +8,30 @@ BEGIN {
 use Moose::Role;
 use MooseX::Types::URI qw/Uri/;
 
-has api_base_url => (
+has base_url => (
     is       => 'rw',
     isa      => Uri,
     coerce   => 1,
     required => 1,
 );
 
-has api_format => (
+has formats => (
     is        => 'rw',
     isa       => 'ArrayRef',
-    predicate => 'has_api_format',
+    predicate => 'has_formats',
 );
 
-has api_authentication => (
+has authentication => (
     is        => 'rw',
     isa       => 'Bool',
-    predicate => 'has_api_authentication',
+    predicate => 'has_authentication',
+);
+
+has expected_status => (
+    is      => 'rw',
+    isa     => 'Array',
+    lazy    => 1,
+    default => sub { [] },
 );
 
 1;
@@ -38,7 +45,7 @@ Net::HTTP::Spore::Role::Description - attributes for API description
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 AUTHOR
 

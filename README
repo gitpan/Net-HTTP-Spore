@@ -2,13 +2,15 @@ NAME
     Net::HTTP::Spore - SPORE client
 
 VERSION
-    version 0.02
+    version 0.03
 
 SYNOPSIS
         my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
 
+        # for identica
+        my $client = Net::HTTP::Spore->new_from_spec('twitter.json', base_url => 'http://identi.ca/com/api');
+
         $client->enable('Format::JSON');
-        $client->enable('Auth::OAuth');
 
         my $timeline = $client->public_timeline(format => 'json');
         my $tweets = $timeline->body;

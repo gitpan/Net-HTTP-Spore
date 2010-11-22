@@ -26,7 +26,6 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'HTTP::Headers' => '0',
     'HTTP::Request' => '0',
-    'Hash::MultiValue' => '0',
     'IO::All' => '0',
     'JSON' => '0',
     'LWP::UserAgent' => '0',
@@ -39,7 +38,6 @@ my %WriteMakefileArgs = (
     'Moose::Util::TypeConstraints' => '0',
     'MooseX::Types::Moose' => '0',
     'MooseX::Types::URI' => '0',
-    'Net::HTTP::API::Error' => '0',
     'Net::OAuth' => '0',
     'Scalar::Util' => '0',
     'Time::HiRes' => '0',
@@ -50,7 +48,7 @@ my %WriteMakefileArgs = (
     'YAML' => '0',
     'overload' => '0'
   },
-  'VERSION' => '0.02',
+  'VERSION' => '0.03',
   'test' => {
     'TESTS' => 't/*.t t/spore-method/*.t t/spore-middleware/*.t t/spore-request/*.t t/spore-response/*.t t/spore/*.t'
   }

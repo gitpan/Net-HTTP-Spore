@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::LogDispatch;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::LogDispatch::VERSION = '0.02';
+  $Net::HTTP::Spore::Middleware::LogDispatch::VERSION = '0.03';
 }
 
 use Moose;
@@ -31,7 +31,7 @@ Net::HTTP::Spore::Middleware::LogDispatch
 
 =head1 VERSION
 
-version 0.02
+version 0.03
 
 =head1 SYNOPSIS
 
