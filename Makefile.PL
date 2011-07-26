@@ -4,7 +4,7 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
@@ -12,11 +12,12 @@ my %WriteMakefileArgs = (
   'ABSTRACT' => 'SPORE client',
   'AUTHOR' => 'franck cuny <franck@lumberjaph.net>',
   'BUILD_REQUIRES' => {
+    'File::Temp' => '0',
     'Test::Exception' => '0',
     'Test::More' => '0'
   },
   'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+    'ExtUtils::MakeMaker' => '6.30'
   },
   'DISTNAME' => 'Net-HTTP-Spore',
   'EXE_FILES' => [],
@@ -24,9 +25,11 @@ my %WriteMakefileArgs = (
   'NAME' => 'Net::HTTP::Spore',
   'PREREQ_PM' => {
     'Carp' => '0',
+    'Digest::SHA' => '0',
     'HTTP::Headers' => '0',
     'HTTP::Request' => '0',
     'IO::All' => '0',
+    'IO::File' => '0',
     'JSON' => '0',
     'LWP::UserAgent' => '0',
     'MIME::Base64' => '0',
@@ -36,9 +39,9 @@ my %WriteMakefileArgs = (
     'Moose::Role' => '0',
     'Moose::Util::MetaRole' => '0',
     'Moose::Util::TypeConstraints' => '0',
+    'MooseX::Role::Parameterized' => '0',
     'MooseX::Types::Moose' => '0',
     'MooseX::Types::URI' => '0',
-    'Net::OAuth' => '0',
     'Scalar::Util' => '0',
     'Time::HiRes' => '0',
     'Try::Tiny' => '0',
@@ -48,9 +51,9 @@ my %WriteMakefileArgs = (
     'YAML' => '0',
     'overload' => '0'
   },
-  'VERSION' => '0.03',
+  'VERSION' => '0.04',
   'test' => {
-    'TESTS' => 't/*.t t/spore-method/*.t t/spore-middleware/*.t t/spore-request/*.t t/spore-response/*.t t/spore/*.t'
+    'TESTS' => 't/*.t t/spore-method/*.t t/spore-middleware/*.t t/spore-request/*.t t/spore-response/*.t t/spore-role/*.t t/spore/*.t'
   }
 );
 

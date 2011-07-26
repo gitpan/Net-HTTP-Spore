@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::XML;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::XML::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Format::XML::VERSION = '0.04';
 }
 
 # ABSTRACT: middleware for XML format
@@ -10,10 +10,24 @@ extends 'Net::HTTP::Spore::Middleware::Format';
 
 use XML::Simple;
 
+my @KnownOptIn     = qw(keyattr keeproot forcecontent contentkey noattr
+                        searchpath forcearray cache suppressempty parseropts
+                        grouptags nsexpand datahandler varattr variables
+                        normalisespace normalizespace valueattr);
+
+my @KnownOptOut    = qw(keyattr keeproot contentkey noattr
+                        rootname xmldecl outputfile noescape suppressempty
+                        grouptags nsexpand handler noindent attrindent nosort
+                        valueattr numericescape);
+
 sub accept_type  { ( 'Accept'       => 'text/xml' ); }
 sub content_type { ( 'Content-Type' => 'text/xml' ) }
-sub encode       { XMLout( $_[1] ) }
-sub decode       { XMLin( $_[1] ) }
+sub encode       { my $mw = $_[0];
+                   my @args = map { $_ => $mw->{$_} } grep { $mw->{$_} } @KnownOptOut;
+                   XMLout( $_[1], @args ) }
+sub decode       { my $mw = $_[0];
+                   my @args = map { $_ => $mw->{$_} } grep { $mw->{$_} } @KnownOptIn;
+                   XMLin( $_[1], @args ) }
 
 1;
 
@@ -27,7 +41,7 @@ Net::HTTP::Spore::Middleware::Format::XML - middleware for XML format
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

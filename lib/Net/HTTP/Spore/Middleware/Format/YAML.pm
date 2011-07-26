@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::YAML;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::YAML::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Format::YAML::VERSION = '0.04';
 }
 
 # ABSTRACT: middleware for YAML format
@@ -26,7 +26,7 @@ Net::HTTP::Spore::Middleware::Format::YAML - middleware for YAML format
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

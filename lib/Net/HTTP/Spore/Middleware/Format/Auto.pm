@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::Auto;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::Auto::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Format::Auto::VERSION = '0.04';
 }
 
 use Moose;
@@ -59,7 +59,7 @@ Net::HTTP::Spore::Middleware::Format::Auto
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 DESCRIPTION
 

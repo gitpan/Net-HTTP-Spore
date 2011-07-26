@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method;
 BEGIN {
-  $Net::HTTP::Spore::Meta::Method::VERSION = '0.03';
+  $Net::HTTP::Spore::Meta::Method::VERSION = '0.04';
 }
 
 # ABSTRACT: create api method
@@ -20,7 +20,7 @@ subtype UriPath
     => where { $_ =~ m!^/! }
     => message {"path must start with /"};
 
-enum Method => qw(HEAD GET POST PUT DELETE);
+enum Method => qw(OPTIONS HEAD GET POST PUT DELETE TRACE);
 
 subtype 'JSON::XS::Boolean' => as 'JSON::XS::Boolean';
 subtype 'JSON::PP::Boolean' => as 'JSON::PP::Boolean';
@@ -213,6 +213,7 @@ sub wrap {
             'spore.payload'         => $payload,
             'spore.errors'          => *STDERR,
             'spore.url_scheme'      => $base_url->scheme,
+            'spore.userinfo'        => $base_url->userinfo,
             'spore.formats'         => $formats,
         };
 
@@ -224,8 +225,10 @@ sub wrap {
         my $response = $self->http_request($env);
         my $code = $response->status;
 
-        die $response if ( $method->has_expected_status
-            && !$method->find_expected_status( sub { /$code/ } ) );
+        my $ok = ($method->has_expected_status)
+            ? $method->find_expected_status( sub { $_ eq $code } )
+            : $response->is_success; # only 2xx is success
+        die $response if not $ok;
 
         $response;
     };
@@ -250,7 +253,7 @@ Net::HTTP::Spore::Meta::Method - create api method
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

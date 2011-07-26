@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Response;
 BEGIN {
-  $Net::HTTP::Spore::Response::VERSION = '0.03';
+  $Net::HTTP::Spore::Response::VERSION = '0.04';
 }
 
 # ABSTRACT: Portable HTTP Response object for SPORE response
@@ -8,7 +8,10 @@ BEGIN {
 use strict;
 use warnings;
 
-use overload '@{}' => \&finalize, fallback => 1;
+use overload
+    '@{}' => \&finalize,
+    '""' => \&to_string,
+    fallback => 1;
 
 use HTTP::Headers;
 
@@ -29,6 +32,7 @@ sub env            { shift->request->env }
 sub content_type   { shift->headers->content_type(@_) }
 sub content_length { shift->headers->content_length(@_) }
 sub location       { shift->header->header( 'Location' => @_ ) }
+sub is_success     { shift->status =~ /^2\d\d$/ }
 
 sub status {
     my $self = shift;
@@ -93,8 +97,18 @@ sub header {
     $self->headers->header(@_);
 }
 
+sub to_string {
+    my $self = shift;
+    my $status = "HTTP status: ".$self->{status};
+    if ($self->{body} =~ /read timeout/){
+        $status .= " - read timeout";
+    }
+    return $status;
+}
+
 sub finalize {
     my $self = shift;
+
     return [
         $self->status,
         +[
@@ -118,7 +132,7 @@ Net::HTTP::Spore::Response - Portable HTTP Response object for SPORE response
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

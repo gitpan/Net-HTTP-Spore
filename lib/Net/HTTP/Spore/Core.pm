@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Core;
 BEGIN {
-  $Net::HTTP::Spore::Core::VERSION = '0.03';
+  $Net::HTTP::Spore::Core::VERSION = '0.04';
 }
 
 use Net::HTTP::Spore::Meta;
@@ -17,7 +17,7 @@ Net::HTTP::Spore::Core
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

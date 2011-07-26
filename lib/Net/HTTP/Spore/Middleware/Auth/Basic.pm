@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth::Basic;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Auth::Basic::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Auth::Basic::VERSION = '0.04';
 }
 
 # ABSTRACT: middleware for Basic authentication
@@ -40,7 +40,7 @@ Net::HTTP::Spore::Middleware::Auth::Basic - middleware for Basic authentication
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

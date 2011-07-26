@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Mock;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Mock::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Mock::VERSION = '0.04';
 }
 
 # ABSTRACT: Simple Mocker for Spore middlewares
@@ -33,7 +33,7 @@ Net::HTTP::Spore::Middleware::Mock - Simple Mocker for Spore middlewares
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

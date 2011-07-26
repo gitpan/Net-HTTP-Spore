@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Request;
 BEGIN {
-  $Net::HTTP::Spore::Request::VERSION = '0.03';
+  $Net::HTTP::Spore::Request::VERSION = '0.04';
 }
 
 # ABSTRACT: Net::HTTP::Spore::Request - Portable HTTP request object from SPORE env hash
@@ -29,7 +29,7 @@ has path => (
     is      => 'rw',
     isa     => 'Str',
     lazy    => 1,
-    default => sub { $_[0]->path_info }
+    default => sub { $_[0]->env->{PATH_INFO} }
 );
 
 has headers => (
@@ -71,6 +71,15 @@ sub method {
     }
 }
 
+sub host {
+    my ($self, $value) = @_;
+    if ($value) {
+        $self->set_to_env('SERVER_NAME', $value);
+    }else{
+        return $self->get_from_env('SERVER_NAME');
+    }
+}
+
 sub port {
     my ( $self, $value ) = @_;
     if ($value) {
@@ -104,10 +113,10 @@ sub request_uri {
 sub scheme {
     my ($self, $value) = @_;
     if ($value) {
-        $self->set_to_env( 'spore.scheme', $value );
+        $self->set_to_env( 'spore.url_scheme', $value );
     }
     else {
-        return $self->get_from_env('spore.scheme');
+        return $self->get_from_env('spore.url_scheme');
     }
 }
 
@@ -197,10 +206,16 @@ sub _uri_base {
     my $uri =
       ( $env->{'spore.url_scheme'} || "http" ) . "://"
       . (
+        defined $env->{'spore.userinfo'}
+        ? $env->{'spore.userinfo'} . '@'
+        : ''
+      )
+      . (
         $env->{HTTP_HOST}
           || (( $env->{SERVER_NAME} || "" ) . ":"
             . ( $env->{SERVER_PORT} || 80 ) )
       ) . ( $env->{SCRIPT_NAME} || '/' );
+
     return $uri;
 }
 
@@ -321,7 +336,8 @@ sub finalize {
     if ( my $payload = $self->content ) {
         $request->content($payload);
         $request->header(
-            'Content-Type' => 'application/x-www-form-urlencoded' );
+            'Content-Type' => 'application/x-www-form-urlencoded' )
+          unless $request->header('Content-Type');
     }
 
     return $request;
@@ -339,7 +355,7 @@ Net::HTTP::Spore::Request - Net::HTTP::Spore::Request - Portable HTTP request ob
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

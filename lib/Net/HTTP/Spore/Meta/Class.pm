@@ -1,13 +1,13 @@
 package Net::HTTP::Spore::Meta::Class;
 BEGIN {
-  $Net::HTTP::Spore::Meta::Class::VERSION = '0.03';
+  $Net::HTTP::Spore::Meta::Class::VERSION = '0.04';
 }
 
 # ABSTRACT: metaclass for all API client
 
 use Moose::Role;
 
-with qw/Net::HTTP::Spore::Meta::Method::Spore Net::HTTP::Spore::Role::Debug/;
+with qw/Net::HTTP::Spore::Meta::Method::Spore/;
 
 1;
 
@@ -21,7 +21,7 @@ Net::HTTP::Spore::Meta::Class - metaclass for all API client
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

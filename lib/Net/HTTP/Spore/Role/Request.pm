@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Request;
 BEGIN {
-  $Net::HTTP::Spore::Role::Request::VERSION = '0.03';
+  $Net::HTTP::Spore::Role::Request::VERSION = '0.04';
 }
 
 # ABSTRACT: make HTTP request
@@ -70,7 +70,11 @@ sub _execute_middlewares_on_response {
 sub _request {
     my ($self, $request) = @_;
 
-    my $result = $self->request($request->finalize);
+    my $finalized_request = $request->finalize();
+
+    $self->_debug_request($request, $finalized_request);
+
+    my $result = $self->request($finalized_request);
 
     my $response = $request->new_response(
         $result->code,
@@ -78,7 +82,35 @@ sub _request {
         $result->content,
     );
 
+    $self->_debug_response($response);
+
     return $response;
+}
+
+sub _debug_request {
+    my ( $self, $request, $finalized_request ) = @_;
+    return unless $self->trace;
+
+    $self->_trace_msg( '> %s %s%s', $request->method, $request->script_name, $request->path );
+    $self->_trace_msg( '> Host: %s', $request->host );
+    $self->_trace_msg( '> Query String: %s', $request->env->{QUERY_STRING} )
+      if defined $request->env->{QUERY_STRING};
+    $self->_trace_msg( '> Content: %s', $request->content )
+      if defined $request->content;
+
+    foreach my $key ( $request->headers->header_field_names ) {
+        $self->_trace_msg( '> %s: %s', $key, $request->header($key) );
+    }
+}
+
+sub _debug_response {
+    my ($self, $response) = @_;
+    return unless $self->trace;
+
+    foreach my $key ( $response->headers->header_field_names ) {
+        $self->_trace_msg( '< %s: %s', $key, $response->header($key) );
+    }
+    $self->_trace_verbose($response->body);
 }
 
 1;
@@ -93,7 +125,7 @@ Net::HTTP::Spore::Role::Request - make HTTP request
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

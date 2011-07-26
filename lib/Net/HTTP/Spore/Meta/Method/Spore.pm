@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method::Spore;
 BEGIN {
-  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.03';
+  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.04';
 }
 
 # ABSTRACT: declare API method
@@ -57,11 +57,11 @@ sub add_spore_method {
 
     my $code = delete $options{code};
 
-#    $meta->_trace_msg( '-> attach '
-#          . $name . ' ('
-#          . $options{method} . ' => '
-#          . $options{path}
-#          . ')' );
+   # $meta->_trace_msg( '-> attach '
+   #       . $name . ' ('
+   #       . $options{method} . ' => '
+   #       . $options{path}
+   #       . ')' );
 
     $meta->add_method(
         $name,
@@ -98,7 +98,7 @@ Net::HTTP::Spore::Meta::Method::Spore - declare API method
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

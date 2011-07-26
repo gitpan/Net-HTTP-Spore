@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Description;
 BEGIN {
-  $Net::HTTP::Spore::Role::Description::VERSION = '0.03';
+  $Net::HTTP::Spore::Role::Description::VERSION = '0.04';
 }
 
 # ABSTRACT: attributes for API description
@@ -45,7 +45,7 @@ Net::HTTP::Spore::Role::Description - attributes for API description
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 AUTHOR
 

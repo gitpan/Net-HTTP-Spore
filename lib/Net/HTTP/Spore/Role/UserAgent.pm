@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::UserAgent;
 BEGIN {
-  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.03';
+  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.04';
 }
 
 # ABSTRACT: create UserAgent
@@ -34,7 +34,7 @@ Net::HTTP::Spore::Role::UserAgent - create UserAgent
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 AUTHOR
 

@@ -160,7 +160,7 @@ Net::HTTP::Spore - SPORE client
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -182,7 +182,13 @@ version 0.03
 
 =head1 DESCRIPTION
 
-This module is an implementation of the SPORE specification. To use this client, you need to use or to write a SPORE specification of an API. Some specifications are available L<http://github.com/SPORE/api-description>.
+This module is an implementation of the SPORE specification.
+
+To use this client, you need to use or to write a SPORE specification of an API.
+A description of the SPORE specification format is available at
+L<http://github.com/SPORE/specifications/blob/master/spore_description.pod>
+
+Some specifications for well-known services are available L<http://github.com/SPORE/api-description>.
 
 =head2 CLIENT CREATION
 
@@ -214,6 +220,24 @@ Create and return a L<Net::HTTP::Spore::Core> object, with methods
 generated from the specification string.
 
 =back
+
+=head2 TRACING
+
+L<Net::HTTP::Spore> provides a way to trace what's going on when doing a request.
+
+=head3 Enabling Trace
+
+You can enable tracing using the environment variable B<SPORE_TRACE>. You can also enable tracing at construct time by adding B<trace =E-<GT> 1> when calling B<new_from_spec>.
+
+=head3 Trace Output
+
+By default output will be directed to B<STDERR>. You can specify another default output:
+
+    SPORE_TRACE=1=log.txt
+
+or
+
+    ->new_from_spec('spec.json', trace => '1=log.txt');
 
 =head1 AUTHOR
 

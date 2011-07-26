@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Runtime;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Runtime::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Runtime::VERSION = '0.04';
 }
 
 # ABSTRACT: add a new header with runtime
@@ -36,7 +36,7 @@ Net::HTTP::Spore::Middleware::Runtime - add a new header with runtime
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

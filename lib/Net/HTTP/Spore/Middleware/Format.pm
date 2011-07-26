@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.04';
 }
 
 # ABSTRACT: base class for formats middlewares
@@ -57,8 +57,9 @@ sub call {
         sub {
             my $res = shift;
             if ( $res->body ) {
-                my $content = $self->decode( $res->body );
+                return if $res->code >= 500;
                 return unless $self->should_deserialize( $res->env );
+                my $content = $self->decode( $res->body );
                 $res->body($content);
                 $res->env->{ $self->deserializer_key } = 1;
             }
@@ -78,7 +79,7 @@ Net::HTTP::Spore::Middleware::Format - base class for formats middlewares
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 

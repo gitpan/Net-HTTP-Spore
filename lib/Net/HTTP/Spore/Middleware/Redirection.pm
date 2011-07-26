@@ -1,7 +1,9 @@
 package Net::HTTP::Spore::Middleware::Redirection;
 BEGIN {
-  $Net::HTTP::Spore::Middleware::Redirection::VERSION = '0.03';
+  $Net::HTTP::Spore::Middleware::Redirection::VERSION = '0.04';
 }
+
+# ABSTRACT: Middleware for redirections
 
 use Moose;
 
@@ -48,16 +50,35 @@ sub call {
 
 1;
 
+
 __END__
 =pod
 
 =head1 NAME
 
-Net::HTTP::Spore::Middleware::Redirection
+Net::HTTP::Spore::Middleware::Redirection - Middleware for redirections
 
 =head1 VERSION
 
-version 0.03
+version 0.04
+
+=head1 SYNOPSIS
+
+    my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+    $client->enable( 'Redirection', max_redirect => 2 );
+
+    # or
+    $client->enable( 'Redirection');
+
+=head1 DESCRIPTION
+
+This middleware let you define how many redirection your client should follow. By default, a client won't follow redirections.
+
+=head2 ATTRIBUTES
+
+=head3 max_redirect
+
+How many redirections the client should follow. Default is 5
 
 =head1 AUTHOR
 

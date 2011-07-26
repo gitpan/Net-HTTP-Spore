@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Middleware;
 BEGIN {
-  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.03';
+  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.04';
 }
 
 use Moose::Role;
@@ -21,13 +21,17 @@ sub _load_middleware {
     Class::MOP::load_class($mw);
 
     my $code = $mw->wrap( $cond, @args );
+    $self->_trace_msg('== enabling middleware %s', $mw);
     $self->_add_middleware($code);
 }
 
 sub _complete_mw_name {
     my ($self, $mw) = @_;
 
-    if ($mw !~ /(?:^\+|Net\:\:HTTP\:\:Spore\:\:Middleware)/) {
+    if ($mw =~ /^\+/) {
+        $mw =~ s/^\+//;
+    }
+    elsif ($mw !~ /Net\:\:HTTP\:\:Spore\:\:Middleware/) {
         $mw = "Net::HTTP::Spore::Middleware::".$mw;
     }
 
@@ -69,7 +73,7 @@ Net::HTTP::Spore::Role::Middleware
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 AUTHOR
 
