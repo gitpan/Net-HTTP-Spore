@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Request;
-BEGIN {
-  $Net::HTTP::Spore::Role::Request::VERSION = '0.04';
+{
+  $Net::HTTP::Spore::Role::Request::VERSION = '0.05';
 }
 
 # ABSTRACT: make HTTP request
@@ -115,8 +115,8 @@ sub _debug_response {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -125,7 +125,7 @@ Net::HTTP::Spore::Role::Request - make HTTP request
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -153,10 +153,9 @@ franck cuny <franck@lumberjaph.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by linkfluence.
+This software is copyright (c) 2012 by linkfluence.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

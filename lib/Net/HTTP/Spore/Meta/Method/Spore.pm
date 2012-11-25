@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method::Spore;
-BEGIN {
-  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.04';
+{
+  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.05';
 }
 
 # ABSTRACT: declare API method
@@ -40,14 +40,14 @@ sub find_spore_method_by_name {
 
 sub remove_spore_method {
     my ($meta, $name) = @_;
-    my @methods = grep { !/$name/ } $meta->get_all_spore_methods;
+    my @methods = grep { $_ ne $name } $meta->get_all_spore_methods;
     $meta->local_spore_methods(\@methods);
     $meta->remove_method($name);
 }
 
 before add_spore_method => sub {
     my ($meta, $name) = @_;
-    if ($meta->_find_spore_method_by_name(sub {/^$name$/})) {
+    if ($meta->_find_spore_method_by_name(sub {$_ eq $name})) {
         confess "method '$name' is already delcared in ".$meta->name;
     }
 };
@@ -88,8 +88,8 @@ after add_spore_method => sub {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -98,7 +98,7 @@ Net::HTTP::Spore::Meta::Method::Spore - declare API method
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -139,10 +139,9 @@ franck cuny <franck@lumberjaph.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by linkfluence.
+This software is copyright (c) 2012 by linkfluence.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

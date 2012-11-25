@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method;
-BEGIN {
-  $Net::HTTP::Spore::Meta::Method::VERSION = '0.04';
+{
+  $Net::HTTP::Spore::Meta::Method::VERSION = '0.05';
 }
 
 # ABSTRACT: create api method
@@ -136,10 +136,11 @@ has documentation => (
 sub wrap {
     my ( $class, %args ) = @_;
 
+    my $name = $args{name};
     my $code = sub {
         my ( $self, %method_args ) = @_;
 
-        my $method = $self->meta->find_spore_method_by_name( $args{name} );
+        my $method = $self->meta->find_spore_method_by_name( $name );
 
         my $payload =
           ( defined $method_args{spore_payload} )
@@ -243,8 +244,8 @@ sub wrap {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -253,7 +254,7 @@ Net::HTTP::Spore::Meta::Method - create api method
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -295,10 +296,9 @@ franck cuny <franck@lumberjaph.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by linkfluence.
+This software is copyright (c) 2012 by linkfluence.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

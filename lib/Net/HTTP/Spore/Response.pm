@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Response;
-BEGIN {
-  $Net::HTTP::Spore::Response::VERSION = '0.04';
+{
+  $Net::HTTP::Spore::Response::VERSION = '0.05';
 }
 
 # ABSTRACT: Portable HTTP Response object for SPORE response
@@ -123,6 +123,7 @@ sub finalize {
 
 1;
 
+__END__
 
 =pod
 
@@ -132,7 +133,7 @@ Net::HTTP::Spore::Response - Portable HTTP Response object for SPORE response
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -264,13 +265,9 @@ franck cuny <franck@lumberjaph.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by linkfluence.
+This software is copyright (c) 2012 by linkfluence.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-

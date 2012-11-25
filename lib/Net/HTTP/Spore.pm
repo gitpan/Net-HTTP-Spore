@@ -1,4 +1,7 @@
 package Net::HTTP::Spore;
+{
+  $Net::HTTP::Spore::VERSION = '0.05';
+}
 
 # ABSTRACT: SPORE client
 
@@ -11,8 +14,6 @@ use Try::Tiny;
 use Scalar::Util;
 
 use Net::HTTP::Spore::Core;
-
-our $VERSION = 0.03;
 
 # XXX should we let the possibility to override this super class, or add
 # another superclasses?
@@ -88,13 +89,8 @@ sub _attach_spec_to_class {
     };
 
     try {
-        my $base_url;
-        if ( $spec->{base_url} && !$opts->{base_url} ) {
-            $opts->{base_url} = $spec->{base_url};
-        }
-        elsif ( !$opts->{base_url} ) {
-            die "base_url is missing!";
-        }
+        $opts->{base_url} ||= $spec->{base_url};
+        die "base_url is missing!" if !$opts->{base_url};
 
         if ( $spec->{formats} ) {
             $opts->{formats} = $spec->{formats};
@@ -126,6 +122,10 @@ sub _read_spec {
         my $req = HTTP::Request->new( GET => $spec_file );
         my $ua  = LWP::UserAgent->new();
         my $res = $ua->request($req);
+        unless( $res->is_success ) {
+            my $status = $res->status_line;
+            Carp::confess("Unabled to fetch $spec_file ($status)");
+        }
         $content = $res->content;
     }
     else {
@@ -150,8 +150,8 @@ sub _add_methods {
 
 1;
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -160,7 +160,7 @@ Net::HTTP::Spore - SPORE client
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -227,7 +227,7 @@ L<Net::HTTP::Spore> provides a way to trace what's going on when doing a request
 
 =head3 Enabling Trace
 
-You can enable tracing using the environment variable B<SPORE_TRACE>. You can also enable tracing at construct time by adding B<trace =E-<GT> 1> when calling B<new_from_spec>.
+You can enable tracing using the environment variable B<SPORE_TRACE>. You can also enable tracing at construct time by adding B<trace =E<gt> 1> when calling B<new_from_spec>.
 
 =head3 Trace Output
 
@@ -245,10 +245,9 @@ franck cuny <franck@lumberjaph.net>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2010 by linkfluence.
+This software is copyright (c) 2012 by linkfluence.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
