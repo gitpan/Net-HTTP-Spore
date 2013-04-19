@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Meta::Method::Spore;
 {
-  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.05';
+  $Net::HTTP::Spore::Meta::Method::Spore::VERSION = '0.06';
 }
 
 # ABSTRACT: declare API method
@@ -98,7 +98,7 @@ Net::HTTP::Spore::Meta::Method::Spore - declare API method
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -133,9 +133,19 @@ Remove a net api method
 
 Add a net api method
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

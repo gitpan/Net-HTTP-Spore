@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::UserAgent;
 {
-  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.05';
+  $Net::HTTP::Spore::Role::UserAgent::VERSION = '0.06';
 }
 
 # ABSTRACT: create UserAgent
@@ -35,11 +35,21 @@ Net::HTTP::Spore::Role::UserAgent - create UserAgent
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

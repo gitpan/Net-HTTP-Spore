@@ -2,10 +2,13 @@ NAME
     Net::HTTP::Spore - SPORE client
 
 VERSION
-    version 0.05
+    version 0.06
 
 SYNOPSIS
         my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+
+        # from JSON specification string
+        my $client = Net::HTTP::Spore->new_from_string($json);
 
         # for identica
         my $client = Net::HTTP::Spore->new_from_spec('twitter.json', base_url => 'http://identi.ca/com/api');
@@ -49,6 +52,11 @@ DESCRIPTION
 
         $client->enable_if(sub{$_->[0]->path =~ m!/path/to/json/stuff!}, 'Format::JSON');
 
+    For very simple middlewares, you can simple pass in an anonymous
+    function
+
+        $client->enable( sub { my $request = shift; ... } );
+
   METHODS
     new_from_spec($specification_file, %args)
         Create and return a Net::HTTP::Spore::Core object, with methods
@@ -57,7 +65,7 @@ DESCRIPTION
 
     new_from_string($specification_string, %args)
         Create and return a Net::HTTP::Spore::Core object, with methods
-        generated from the specification string.
+        generated from a JSON specification string.
 
   TRACING
     Net::HTTP::Spore provides a way to trace what's going on when doing a
@@ -78,8 +86,10 @@ DESCRIPTION
 
         ->new_from_spec('spec.json', trace => '1=log.txt');
 
-AUTHOR
-    franck cuny <franck@lumberjaph.net>
+AUTHORS
+    *   franck cuny <franck@lumberjaph.net>
+
+    *   Ash Berlin <ash@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2012 by linkfluence.

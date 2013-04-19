@@ -60,11 +60,21 @@ Net::HTTP::Spore::Meta - Meta class for all SPORE object
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

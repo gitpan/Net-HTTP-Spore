@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth::OAuth;
 {
-  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Auth::OAuth::VERSION = '0.06';
 }
 
 # ABSTRACT: middleware for OAuth authentication
@@ -229,7 +229,7 @@ Net::HTTP::Spore::Middleware::Auth::OAuth - middleware for OAuth authentication
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -254,9 +254,19 @@ version 0.05
 
 Net::HTTP::Spore::Middleware::Auth::OAuth is a middleware to handle OAuth mechanism. This middleware should be loaded as the last middleware, because it requires all parameters to be setted to calculate the signature.
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

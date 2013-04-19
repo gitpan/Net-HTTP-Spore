@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role::Request;
 {
-  $Net::HTTP::Spore::Role::Request::VERSION = '0.05';
+  $Net::HTTP::Spore::Role::Request::VERSION = '0.06';
 }
 
 # ABSTRACT: make HTTP request
@@ -125,7 +125,7 @@ Net::HTTP::Spore::Role::Request - make HTTP request
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -147,9 +147,19 @@ version 0.05
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

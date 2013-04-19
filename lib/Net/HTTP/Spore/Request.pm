@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Request;
 {
-  $Net::HTTP::Spore::Request::VERSION = '0.05';
+  $Net::HTTP::Spore::Request::VERSION = '0.06';
 }
 
 # ABSTRACT: Net::HTTP::Spore::Request - Portable HTTP request object from SPORE env hash
@@ -355,7 +355,7 @@ Net::HTTP::Spore::Request - Net::HTTP::Spore::Request - Portable HTTP request ob
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -455,9 +455,19 @@ Get the content that will be posted
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

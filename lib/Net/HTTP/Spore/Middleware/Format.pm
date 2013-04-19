@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format;
 {
-  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Format::VERSION = '0.06';
 }
 
 # ABSTRACT: base class for formats middlewares
@@ -79,7 +79,7 @@ Net::HTTP::Spore::Middleware::Format - base class for formats middlewares
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -135,9 +135,19 @@ this method returns 1 if deserialization have not already been done
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

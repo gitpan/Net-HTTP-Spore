@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::LogDispatch;
 {
-  $Net::HTTP::Spore::Middleware::LogDispatch::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::LogDispatch::VERSION = '0.06';
 }
 
 # ABSTRACT: Net::HTTP::Spore::Middleware::LogDispatch is a middleware that allow you to use LogDispatch.
@@ -33,7 +33,7 @@ Net::HTTP::Spore::Middleware::LogDispatch - Net::HTTP::Spore::Middleware::LogDis
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -49,9 +49,19 @@ version 0.05
     my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
     $client->enable( 'LogDispatch', logger => $log );
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

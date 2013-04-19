@@ -9,6 +9,7 @@ dies_ok {
         name         => 'test_method',
         package_name => 'test::api',
         body         => sub { 1 },
+        path         => '/path',
     );
 }
 "missing some params";
@@ -34,5 +35,7 @@ ok $method = Net::HTTP::Spore::Meta::Method->wrap(
     params       => { optional => [qw/name id street/] },
     required     => [qw/name id/],
 );
+
+ok !$method->has_authentication, 'authentication not set on method';
 
 done_testing;

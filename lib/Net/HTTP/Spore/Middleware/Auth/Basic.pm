@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth::Basic;
 {
-  $Net::HTTP::Spore::Middleware::Auth::Basic::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Auth::Basic::VERSION = '0.06';
 }
 
 # ABSTRACT: middleware for Basic authentication
@@ -40,7 +40,7 @@ Net::HTTP::Spore::Middleware::Auth::Basic - middleware for Basic authentication
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -51,9 +51,19 @@ version 0.05
 
 Net::HTTP::Spore::Middleware::Auth::Basic is a middleware to handle Basic authentication mechanism.
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Response;
 {
-  $Net::HTTP::Spore::Response::VERSION = '0.05';
+  $Net::HTTP::Spore::Response::VERSION = '0.06';
 }
 
 # ABSTRACT: Portable HTTP Response object for SPORE response
@@ -133,7 +133,7 @@ Net::HTTP::Spore::Response - Portable HTTP Response object for SPORE response
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -259,9 +259,19 @@ The third and final element is the body
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

@@ -1,12 +1,14 @@
 package Net::HTTP::Spore::Role::Description;
 {
-  $Net::HTTP::Spore::Role::Description::VERSION = '0.05';
+  $Net::HTTP::Spore::Role::Description::VERSION = '0.06';
 }
 
 # ABSTRACT: attributes for API description
 
 use Moose::Role;
+use MooseX::Types::Moose qw/ArrayRef/;
 use MooseX::Types::URI qw/Uri/;
+use Net::HTTP::Spore::Meta::Types qw/Boolean/;
 
 has base_url => (
     is       => 'rw',
@@ -17,19 +19,20 @@ has base_url => (
 
 has formats => (
     is        => 'rw',
-    isa       => 'ArrayRef',
+    isa       => ArrayRef,
     predicate => 'has_formats',
 );
 
 has authentication => (
     is        => 'rw',
-    isa       => 'Bool',
+    isa       => Boolean,
     predicate => 'has_authentication',
+    coerce    => 1,
 );
 
 has expected_status => (
     is      => 'rw',
-    isa     => 'Array',
+    isa     => ArrayRef,
     lazy    => 1,
     default => sub { [] },
 );
@@ -46,11 +49,21 @@ Net::HTTP::Spore::Role::Description - attributes for API description
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

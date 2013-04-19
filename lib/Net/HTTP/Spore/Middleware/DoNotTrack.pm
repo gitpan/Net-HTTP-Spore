@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::DoNotTrack;
 {
-  $Net::HTTP::Spore::Middleware::DoNotTrack::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::DoNotTrack::VERSION = '0.06';
 }
 
 # ABSTRACT: add a new header to not track
@@ -25,7 +25,7 @@ Net::HTTP::Spore::Middleware::DoNotTrack - add a new header to not track
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -36,9 +36,19 @@ version 0.05
 
 Add a header B<x-do-not-track> to your requests. For more details see L<http://donottrack.us/>.
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

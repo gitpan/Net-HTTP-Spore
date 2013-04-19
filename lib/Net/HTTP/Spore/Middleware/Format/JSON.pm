@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Format::JSON;
 {
-  $Net::HTTP::Spore::Middleware::Format::JSON::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Format::JSON::VERSION = '0.06';
 }
 
 # ABSTRACT: middleware for JSON format
@@ -33,7 +33,7 @@ Net::HTTP::Spore::Middleware::Format::JSON - middleware for JSON format
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -48,9 +48,19 @@ This middleware will also deserialize content in the response. The deserialized 
 
 =head1 EXAMPLES
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

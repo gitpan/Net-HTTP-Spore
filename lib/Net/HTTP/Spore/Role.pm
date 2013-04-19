@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Role;
 {
-  $Net::HTTP::Spore::Role::VERSION = '0.05';
+  $Net::HTTP::Spore::Role::VERSION = '0.06';
 }
 
 # ABSTRACT: Role to easily add multiples Spore clients to your class
@@ -58,7 +58,7 @@ Net::HTTP::Spore::Role - Role to easily add multiples Spore clients to your clas
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -75,9 +75,19 @@ version 0.05
 
 This is a role you can apply to your class. This role let you create a Spore client with a specific configuration.
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

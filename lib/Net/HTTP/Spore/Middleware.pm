@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware;
 {
-  $Net::HTTP::Spore::Middleware::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::VERSION = '0.06';
 }
 
 # ABSTRACT: middlewares base class
@@ -50,11 +50,21 @@ Net::HTTP::Spore::Middleware - middlewares base class
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

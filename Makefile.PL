@@ -10,13 +10,8 @@ use ExtUtils::MakeMaker 6.30;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "SPORE client",
-  "AUTHOR" => "franck cuny <franck\@lumberjaph.net>",
-  "BUILD_REQUIRES" => {
-    "File::Temp" => 0,
-    "Test::Exception" => 0,
-    "Test::More" => 0,
-    "base" => 0
-  },
+  "AUTHOR" => "franck cuny <franck\@lumberjaph.net>, Ash Berlin <ash\@cpan.org>",
+  "BUILD_REQUIRES" => {},
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => "6.30"
   },
@@ -41,6 +36,7 @@ my %WriteMakefileArgs = (
     "Moose::Util::MetaRole" => 0,
     "Moose::Util::TypeConstraints" => 0,
     "MooseX::Role::Parameterized" => 0,
+    "MooseX::Types" => 0,
     "MooseX::Types::Moose" => 0,
     "MooseX::Types::URI" => 0,
     "Scalar::Util" => 0,
@@ -54,12 +50,31 @@ my %WriteMakefileArgs = (
     "strict" => 0,
     "warnings" => 0
   },
-  "VERSION" => "0.05",
+  "TEST_REQUIRES" => {
+    "File::Temp" => 0,
+    "Test::Exception" => 0,
+    "Test::More" => 0,
+    "base" => 0
+  },
+  "VERSION" => "0.06",
   "test" => {
     "TESTS" => "t/*.t t/spore-method/*.t t/spore-middleware/*.t t/spore-request/*.t t/spore-response/*.t t/spore-role/*.t t/spore/*.t"
   }
 );
 
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.63_03) } ) {
+  my $tr = delete $WriteMakefileArgs{TEST_REQUIRES};
+  my $br = $WriteMakefileArgs{BUILD_REQUIRES};
+  for my $mod ( keys %$tr ) {
+    if ( exists $br->{$mod} ) {
+      $br->{$mod} = $tr->{$mod} if $tr->{$mod} > $br->{$mod};
+    }
+    else {
+      $br->{$mod} = $tr->{$mod};
+    }
+  }
+}
 
 unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
   my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};

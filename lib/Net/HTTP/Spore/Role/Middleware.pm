@@ -1,9 +1,10 @@
 package Net::HTTP::Spore::Role::Middleware;
 {
-  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.05';
+  $Net::HTTP::Spore::Role::Middleware::VERSION = '0.06';
 }
 
 use Moose::Role;
+use Scalar::Util qw/blessed/;
 
 has middlewares => (
     is         => 'rw',
@@ -18,7 +19,7 @@ has middlewares => (
 sub _load_middleware {
     my ( $self, $mw, $cond, @args ) = @_;
 
-    Class::MOP::load_class($mw);
+    Class::MOP::load_class($mw) unless blessed($mw);
 
     my $code = $mw->wrap( $cond, @args );
     $self->_trace_msg('== enabling middleware %s', $mw);
@@ -52,7 +53,18 @@ sub enable_if {
 
     confess "condition must be a code ref" if (!$cond || ref $cond ne 'CODE');
 
-    $mw = $self->_complete_mw_name($mw);
+    if(ref($mw) eq 'CODE'){ # anonymous middleware
+        Class::MOP::load_class('Net::HTTP::Spore::Middleware');
+        my $anon = Class::MOP::Class->create_anon_class(
+            superclasses => ['Net::HTTP::Spore::Middleware'],
+            methods => {
+                call => $mw
+            }
+        );
+        $mw = $anon->new_object;
+    } else {
+        $mw = $self->_complete_mw_name($mw);
+    }
     $self->_load_middleware($mw, $cond, @args);
     $self;
 }
@@ -74,11 +86,21 @@ Net::HTTP::Spore::Role::Middleware
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

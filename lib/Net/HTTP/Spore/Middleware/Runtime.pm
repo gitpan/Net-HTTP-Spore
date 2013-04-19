@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Runtime;
 {
-  $Net::HTTP::Spore::Middleware::Runtime::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Runtime::VERSION = '0.06';
 }
 
 # ABSTRACT: add a new header with runtime
@@ -36,7 +36,7 @@ Net::HTTP::Spore::Middleware::Runtime - add a new header with runtime
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
@@ -50,9 +50,19 @@ version 0.05
 
 Net::HTTP::Spore::Middleware::Runtime is a middleware that add a new header to the response's headers: X-Spore-Runtime. The value of the header is the time the request took to be executed.
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

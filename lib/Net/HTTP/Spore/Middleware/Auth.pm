@@ -1,6 +1,6 @@
 package Net::HTTP::Spore::Middleware::Auth;
 {
-  $Net::HTTP::Spore::Middleware::Auth::VERSION = '0.05';
+  $Net::HTTP::Spore::Middleware::Auth::VERSION = '0.06';
 }
 
 # ABSTRACT: base class for Authentication middlewares
@@ -24,15 +24,25 @@ Net::HTTP::Spore::Middleware::Auth - base class for Authentication middlewares
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 DESCRIPTION
 
 Authentication middleware should extends this base class and implement the B<call> method
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

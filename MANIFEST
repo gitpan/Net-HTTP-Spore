@@ -19,6 +19,7 @@ lib/Net/HTTP/Spore/Meta.pm
 lib/Net/HTTP/Spore/Meta/Class.pm
 lib/Net/HTTP/Spore/Meta/Method.pm
 lib/Net/HTTP/Spore/Meta/Method/Spore.pm
+lib/Net/HTTP/Spore/Meta/Types.pm
 lib/Net/HTTP/Spore/Middleware.pm
 lib/Net/HTTP/Spore/Middleware/Auth.pm
 lib/Net/HTTP/Spore/Middleware/Auth/Basic.pm
@@ -45,13 +46,13 @@ lib/Net/HTTP/Spore/Role/Request.pm
 lib/Net/HTTP/Spore/Role/UserAgent.pm
 t/release-eol.t
 t/release-no-tabs.t
-t/release-pod-coverage.t
 t/release-pod-syntax.t
 t/specs/api.json
 t/specs/api2.json
 t/specs/content.tgz
 t/spore-method/base.t
 t/spore-method/payload.t
+t/spore-middleware/anonymous.t
 t/spore-middleware/auth-basic.t
 t/spore-middleware/auth-header.t
 t/spore-middleware/auth-oauth.t

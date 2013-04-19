@@ -1,6 +1,6 @@
 package Net::HTTP::Spore;
 {
-  $Net::HTTP::Spore::VERSION = '0.05';
+  $Net::HTTP::Spore::VERSION = '0.06';
 }
 
 # ABSTRACT: SPORE client
@@ -25,7 +25,7 @@ sub new_from_string {
       Class::MOP::Class->create_anon_class(
         superclasses => ['Net::HTTP::Spore::Core'] );
 
-    my $spore_object = _attach_spec_to_class($string, \%args, $spore_class);
+    my $spore_object = $class->_attach_spec_to_class($string, \%args, $spore_class);
 
     return $spore_object;
 }
@@ -45,7 +45,7 @@ sub new_from_strings {
 
     my $spore_object = undef;
     foreach my $string (@strings) {
-        $spore_object = _attach_spec_to_class($string, $opts, $spore_class, $spore_object);
+        $spore_object = $class->_attach_spec_to_class($string, $opts, $spore_class, $spore_object);
     }
     return $spore_object;
 }
@@ -78,7 +78,7 @@ sub new_from_specs {
 }
 
 sub _attach_spec_to_class {
-    my ( $string, $opts, $class, $object ) = @_;
+    my ( $class, $string, $opts, $spore_class, $object ) = @_;
 
     my $spec;
     try {
@@ -101,9 +101,9 @@ sub _attach_spec_to_class {
         }
 
         if ( !$object ) {
-            $object = $class->new_object(%$opts);
+            $object = $spore_class->new_object(%$opts);
         }
-        $object = _add_methods( $object, $spec->{methods} );
+        $object = $class->_add_methods( $object, $spec->{methods} );
     }
     catch {
         Carp::confess( "unable to create new Net::HTTP::Spore object: " . $_ );
@@ -139,13 +139,13 @@ sub _read_spec {
 }
 
 sub _add_methods {
-    my ($class, $methods_spec) = @_;
+    my ($class, $spore, $methods_spec) = @_;
 
     foreach my $method_name (keys %$methods_spec) {
-        $class->meta->add_spore_method($method_name,
+        $spore->meta->add_spore_method($method_name,
             %{$methods_spec->{$method_name}});
     }
-    $class;
+    $spore;
 }
 
 1;
@@ -160,11 +160,14 @@ Net::HTTP::Spore - SPORE client
 
 =head1 VERSION
 
-version 0.05
+version 0.06
 
 =head1 SYNOPSIS
 
     my $client = Net::HTTP::Spore->new_from_spec('twitter.json');
+
+    # from JSON specification string
+    my $client = Net::HTTP::Spore->new_from_string($json);
 
     # for identica
     my $client = Net::HTTP::Spore->new_from_spec('twitter.json', base_url => 'http://identi.ca/com/api');
@@ -204,6 +207,10 @@ or only on some path
 
     $client->enable_if(sub{$_->[0]->path =~ m!/path/to/json/stuff!}, 'Format::JSON');
 
+For very simple middlewares, you can simple pass in an anonymous function
+
+    $client->enable( sub { my $request = shift; ... } );
+
 =head2 METHODS
 
 =over 4
@@ -217,7 +224,7 @@ either be a file on disk or a remote URL.
 =item new_from_string($specification_string, %args)
 
 Create and return a L<Net::HTTP::Spore::Core> object, with methods
-generated from the specification string.
+generated from a JSON specification string.
 
 =back
 
@@ -239,9 +246,19 @@ or
 
     ->new_from_spec('spec.json', trace => '1=log.txt');
 
-=head1 AUTHOR
+=head1 AUTHORS
+
+=over 4
+
+=item *
 
 franck cuny <franck@lumberjaph.net>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 
